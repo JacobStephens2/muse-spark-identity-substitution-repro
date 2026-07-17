@@ -1,0 +1,47 @@
+{
+  "input": [
+    {
+      "content": "You are a coding agent. Use the provided tools to complete the task. Use file names exactly as given.",
+      "role": "system"
+    },
+    {
+      "content": [
+        {
+          "text": "Create a file named muse-smoke.txt in the current directory containing exactly the word: factory",
+          "type": "input_text"
+        }
+      ],
+      "role": "user"
+    }
+  ],
+  "max_output_tokens": 32000,
+  "model": "muse-spark-1.1",
+  "store": false,
+  "stream": false,
+  "tool_choice": "auto",
+  "tools": [
+    {
+      "description": "Write content to a file at the given path, creating it if it does not exist.",
+      "name": "write",
+      "parameters": {
+        "properties": {
+          "content": {
+            "description": "The content to write to the file",
+            "type": "string"
+          },
+          "filePath": {
+            "description": "The absolute path to the file to write (must be absolute, not relative)",
+            "type": "string"
+          }
+        },
+        "required": [
+          "content",
+          "filePath"
+        ],
+        "type": "object"
+      },
+      "strict": false,
+      "type": "function"
+    }
+  ]
+}

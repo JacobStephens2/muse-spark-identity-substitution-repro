@@ -1,0 +1,34 @@
+{
+  "status": "historical_console_summary",
+  "date": "2026-07-17",
+  "model": "muse-spark-1.1",
+  "endpoint": "/v1/responses",
+  "tool_calls_executed": false,
+  "notes": [
+    "B2 combines the first two trials and the later ten-trial confirmation run.",
+    "B12 combines the first three trials, a two-trial follow-up, and the later ten-trial confirmation run.",
+    "Fresh machine-readable trial records must be generated with the committed runner before public release."
+  ],
+  "variants": {
+    "minimal_synthetic_control": {
+      "trials": 80,
+      "counts": {
+        "exact": 80
+      }
+    },
+    "b2-opencode-write-only.json": {
+      "trials": 12,
+      "counts": {
+        "claude_substitution": 12
+      }
+    },
+    "b12-minimal-neutral.json": {
+      "trials": 15,
+      "counts": {
+        "muse_exact": 8,
+        "claude_substitution": 6,
+        "cursor_substitution": 1
+      }
+    }
+  }
+}
