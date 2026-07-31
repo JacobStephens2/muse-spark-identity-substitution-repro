@@ -6,7 +6,8 @@ The behavior is stochastic and strongly dependent on the request envelope. A min
 
 This is a private staging repository. It is being prepared for an upstream report and has not yet been approved for public release.
 
-**Start here for “what do we know today?”:** [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md)
+**Start here for “what do we know today?”:** [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md)  
+**Blog / public write-up timing:** [`PUBLICATION-DECISION.md`](PUBLICATION-DECISION.md)
 
 ## Safety
 
@@ -114,6 +115,7 @@ See [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) for the multi-channel map and [
 | [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) | What is known today; channels; response ID locations |
 | [`REPORT.md`](REPORT.md) | Vendor-facing write-up |
 | [`meta_auth.py`](meta_auth.py) / [`.env.example`](.env.example) | Shared Meta API key resolution for both channels |
+| [`PUBLICATION-DECISION.md`](PUBLICATION-DECISION.md) | When to publish or update a public blog post |
 | [`opencode_live.py`](opencode_live.py) / [`opencode-live/`](opencode-live/) | Live OpenCode facilitator |
 | [`hypothesis-opencode-live.md`](hypothesis-opencode-live.md) | Live-harness hypothesis |
 | [`hypothesis-opencode-live-followup.md`](hypothesis-opencode-live-followup.md) | Hypothesis evaluation |

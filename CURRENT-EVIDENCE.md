@@ -11,6 +11,7 @@ Related documents:
 | [`hypothesis-opencode-live.md`](hypothesis-opencode-live.md) | Pre-registered live-OpenCode hypothesis |
 | [`hypothesis-opencode-live-followup.md`](hypothesis-opencode-live-followup.md) | H1–H5 evaluation after live run |
 | [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md) | **Current** Melissa reply draft (response IDs) |
+| [`PUBLICATION-DECISION.md`](PUBLICATION-DECISION.md) | When to publish or update a public blog post |
 | [`meta-reply-to-melissa-warmer.md`](meta-reply-to-melissa-warmer.md) / [`.txt`](meta-reply-to-melissa.txt) | Historical 2026-07-23 drafts (superseded) |
 | [`meta-support-attachment/`](meta-support-attachment/) | Support zip contents (summaries + REPORT, no raw resp IDs) |
 | [`opencode-live/README.md`](opencode-live/README.md) | How to re-run the live harness |

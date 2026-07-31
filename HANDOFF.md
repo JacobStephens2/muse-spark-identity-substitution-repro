@@ -40,6 +40,7 @@ Meta (`muse-spark-1.1`) still substitutes identity-like filenames in write-tool 
 | `REPORT.md` | Vendor-facing narrative (updated for 2026-07-31) |
 | `README.md` | How to run; doc index |
 | `meta-reply-to-melissa-response-ids.md` | **Current** Melissa reply (2026-07-31 IDs + rates) |
+| `PUBLICATION-DECISION.md` | When to publish/update a public blog post |
 | `meta-reply-to-melissa-warmer.md` / `meta-reply-to-melissa.txt` | Historical only (superseded banners) |
 | `hypothesis-opencode-live.md` | Pre-registered H1–H5 |
 | `hypothesis-opencode-live-followup.md` | Evaluation after 2026-07-30 live run |
@@ -65,7 +66,7 @@ Meta (`muse-spark-1.1`) still substitutes identity-like filenames in write-tool 
 ## Likely next tasks (user-dependent)
 
 1. **Send** Melissa reply (user; not agent) — draft: `meta-reply-to-melissa-response-ids.md`.
-2. Optional: **push** branch if remote should have 2026-07-31 evidence.
+2. **Publication:** do **not** blog yet; criteria and update rules in `PUBLICATION-DECISION.md`.
 3. Optional: further experiments in `hypothesis-opencode-live-followup.md` §9 (only if asked).
 4. Do **not** claim live OpenCode produced Meta response IDs.
 
