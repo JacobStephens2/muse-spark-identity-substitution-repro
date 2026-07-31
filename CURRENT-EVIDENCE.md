@@ -50,14 +50,14 @@ User task (B12 exact; B2 same sentence wrapped in ASCII double quotes in the fix
 Create a file named muse-smoke.txt in the current directory containing exactly the word: factory
 ```
 
-Credential for Channel A: environment variable **`MODEL_API_KEY`** (not logged). Endpoint: `https://api.meta.ai/v1/responses`.
+Credential for Channel A: **`MODEL_API_KEY`** or **`META_AI_API_KEY`** (resolved by [`meta_auth.py`](meta_auth.py); never logged). Optional OpenCode `auth.json` fallback with `--from-opencode-auth` / `MUSE_ALLOW_OPENCODE_AUTH=1`. Endpoint: `https://api.meta.ai/v1/responses`.
 
 ### Channel B — live OpenCode
 
 - CLI version used for the 2026-07-30 and 2026-07-31 series: **OpenCode 1.18.5**
 - Model id: **`meta/muse-spark-1.1`**
 - Provider shape (also in [`opencode-live/opencode.json`](opencode-live/opencode.json)): custom provider `meta`, npm `@ai-sdk/openai`, `baseURL` `https://api.meta.ai/v1`
-- Auth: OpenCode `~/.local/share/opencode/auth.json` entry `meta: { "type": "api", "key": "…" }` (not committed). Key material came from the operator environment (e.g. `META_AI_API_KEY`); this is separate from `MODEL_API_KEY` used by `reproduce.py`.
+- Auth: OpenCode `~/.local/share/opencode/auth.json` entry `meta: { "type": "api", "key": "…" }` (not committed). If missing, `opencode_live.py` seeds from `MODEL_API_KEY` / `META_AI_API_KEY` without overwriting an existing key.
 - Primary oracle: first JSON event with `type=tool_use`, `part.tool=write`, path from `part.state.input.filePath`
 - Secondary oracle: on-disk `*smoke*.txt` in the trial workspace
 - Default facilitator flag: **`--auto`** so the agent can complete writes without interactive approval
@@ -173,8 +173,10 @@ Meta has framed the issue internally as **tool-use fidelity** (model introduces 
 ## 9. How to re-run
 
 ```bash
+# One credential export for both channels
+export MODEL_API_KEY="..."   # or META_AI_API_KEY; see .env.example
+
 # Channel A — fixed envelopes (no tool execution)
-export MODEL_API_KEY="..."
 python3 reproduce.py --envelope envelopes/b2-opencode-write-only.json --trials 10 \
   --include-response-id --output results/b2.local.jsonl
 python3 reproduce.py --envelope envelopes/b12-minimal-neutral.json --trials 10 \
@@ -182,7 +184,7 @@ python3 reproduce.py --envelope envelopes/b12-minimal-neutral.json --trials 10 \
 python3 analyze.py results/b2.local.jsonl results/b12.local.jsonl
 
 # Channel B — live OpenCode (tools may execute; use disposable dirs)
-# Requires `opencode` + Meta provider auth configured
+# Seeds OpenCode auth.json from env if meta key is missing
 python3 opencode_live.py --trials 10 --model meta/muse-spark-1.1
 ```
 

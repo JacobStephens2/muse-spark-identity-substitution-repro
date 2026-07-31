@@ -30,6 +30,8 @@ DEFAULT_PROMPT = (
     "Create a file named muse-smoke.txt in the current directory "
     "containing exactly the word: factory"
 )
+from meta_auth import DEFAULT_OPENCODE_AUTH_PATH, ensure_opencode_meta_auth, read_opencode_meta_key
+
 DEFAULT_MODEL = "meta/muse-spark-1.1"
 DEFAULT_OPENCODE = "opencode"
 
@@ -293,8 +295,36 @@ def main(argv: list[str] | None = None) -> int:
         "requested_filename": REQUESTED_FILENAME,
     }
     if args.dry_run:
+        # Report auth presence without writing anything.
+        has_meta = bool(read_opencode_meta_key(DEFAULT_OPENCODE_AUTH_PATH))
+        plan["opencode_auth"] = {
+            "status": "already_present" if has_meta else "missing_would_seed_from_env",
+            "auth_path": str(DEFAULT_OPENCODE_AUTH_PATH),
+            "provider": "meta",
+        }
         print(json.dumps(plan, indent=2, sort_keys=True))
         return 0
+
+    # Best-effort: if OpenCode has no meta key, seed from MODEL_API_KEY /
+    # META_AI_API_KEY. Never overwrites an existing key. Status never includes
+    # the secret itself.
+    auth_status = ensure_opencode_meta_auth()
+    plan["opencode_auth"] = {
+        k: auth_status[k]
+        for k in ("status", "auth_path", "provider", "source", "error")
+        if k in auth_status
+    }
+    if auth_status["status"] == "unchanged_missing_key":
+        print(
+            "warning: OpenCode meta auth missing and no MODEL_API_KEY/"
+            "META_AI_API_KEY to seed it; OpenCode may fail auth",
+            file=sys.stderr,
+        )
+    elif auth_status["status"] == "written":
+        print(
+            f"seeded OpenCode meta auth from {auth_status['source']}",
+            file=sys.stderr,
+        )
 
     print(json.dumps({"status": "starting", **plan}, sort_keys=True), file=sys.stderr)
 

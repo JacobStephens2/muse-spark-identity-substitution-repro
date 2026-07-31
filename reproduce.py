@@ -6,7 +6,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 import sys
 import time
 import urllib.error
@@ -16,8 +15,13 @@ from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any
 
+from meta_auth import (
+    DEFAULT_KEY_ENV,
+    MissingApiKeyError,
+    resolve_api_key,
+)
+
 DEFAULT_URL = "https://api.meta.ai/v1/responses"
-DEFAULT_KEY_ENV = "MODEL_API_KEY"
 EXPECTED_MODEL = "muse-spark-1.1"
 REQUESTED_FILENAME = "muse-smoke.txt"
 
@@ -190,7 +194,23 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--trials", type=int, default=1)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--url", default=DEFAULT_URL)
-    parser.add_argument("--key-env", default=DEFAULT_KEY_ENV)
+    parser.add_argument(
+        "--key-env",
+        default=DEFAULT_KEY_ENV,
+        help=(
+            "Env var for the Meta API key (default: MODEL_API_KEY). "
+            "When left at the default, META_AI_API_KEY is also accepted."
+        ),
+    )
+    parser.add_argument(
+        "--from-opencode-auth",
+        action="store_true",
+        help=(
+            "If no MODEL_API_KEY/META_AI_API_KEY is set, fall back to "
+            "OpenCode ~/.local/share/opencode/auth.json meta.key "
+            "(also enabled by MUSE_ALLOW_OPENCODE_AUTH=1)."
+        ),
+    )
     parser.add_argument("--timeout", type=float, default=300.0)
     parser.add_argument("--include-response-id", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
@@ -218,13 +238,17 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(metadata, indent=2, sort_keys=True))
         return 0
 
-    key = os.environ.get(args.key_env)
-    if not key:
-        print(
-            f"error: {args.key_env} is not set; no API request was made",
-            file=sys.stderr,
+    try:
+        key, key_source = resolve_api_key(
+            key_env=args.key_env,
+            allow_opencode_auth=True if args.from_opencode_auth else None,
         )
+    except MissingApiKeyError as exc:
+        print(f"error: {exc}", file=sys.stderr)
         return 2
+
+    # Source name only — never the secret.
+    print(f"using api key from {key_source}", file=sys.stderr)
 
     output_handle = None
     if args.output:

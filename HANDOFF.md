@@ -54,7 +54,7 @@ Meta (`muse-spark-1.1`) still substitutes identity-like filenames in write-tool 
 
 ## Operational notes
 
-- **Two credentials:** `MODEL_API_KEY` for `reproduce.py` (can reuse OpenCode `auth.json` `meta.key` for retests); OpenCode auth at `~/.local/share/opencode/auth.json` (do not commit).
+- **Credentials:** Prefer one env export — `MODEL_API_KEY` or `META_AI_API_KEY` (see `meta_auth.py`, `.env.example`). `reproduce.py` accepts either; optional `--from-opencode-auth` / `MUSE_ALLOW_OPENCODE_AUTH=1` falls back to OpenCode `auth.json`. `opencode_live.py` seeds OpenCode `meta` from env only if missing (never overwrites). Do not commit keys or `auth.json`.
 - **Channel A vs B:** Only Channel A yields Meta `resp_…` IDs. Live OpenCode has `ses_…` / tool `call_…` only.
 - **Safety:** `reproduce.py` never executes tools. `opencode_live.py --auto` **does** execute writes in trial dirs; absolute path rewrites can escape the workspace.
 - **User preference:** Do not auto-update Mimestream; local markdown only unless asked.

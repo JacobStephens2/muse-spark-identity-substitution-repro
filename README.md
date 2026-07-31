@@ -25,6 +25,28 @@ The committed fixtures contain no API key, authorization header, cache key, comp
 
 No third-party Python packages are required for `reproduce.py`.
 
+## Credentials (one export for both channels)
+
+Set a key in the environment only (never commit it). Either name works:
+
+```bash
+export MODEL_API_KEY="..."          # preferred
+# export META_AI_API_KEY="..."      # accepted alias
+```
+
+Optional local file (gitignored): copy [`.env.example`](.env.example) to `.env`, edit, then:
+
+```bash
+set -a && source .env && set +a
+```
+
+| Channel | How the key is used |
+|---|---|
+| **A** `reproduce.py` | Reads `MODEL_API_KEY`, else `META_AI_API_KEY`. Optional fallback: `--from-opencode-auth` or `MUSE_ALLOW_OPENCODE_AUTH=1` (reads OpenCode `auth.json` `meta.key` only when env is empty). |
+| **B** `opencode_live.py` | Uses OpenCode’s auth store. If `meta` is missing there, seeds it from the same env vars (never overwrites an existing key). |
+
+Shared resolution lives in [`meta_auth.py`](meta_auth.py). Keys are never printed; only the *source name* is logged to stderr.
+
 ## Validate without making an API call
 
 ```bash
@@ -33,12 +55,6 @@ python3 -m unittest discover -s tests -v
 ```
 
 ## Run the reproductions
-
-Set the credential only in the environment:
-
-```bash
-export MODEL_API_KEY="..."
-```
 
 Run the rich, write-only envelope ten times:
 
@@ -97,6 +113,7 @@ See [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) for the multi-channel map and [
 |---|---|
 | [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) | What is known today; channels; response ID locations |
 | [`REPORT.md`](REPORT.md) | Vendor-facing write-up |
+| [`meta_auth.py`](meta_auth.py) / [`.env.example`](.env.example) | Shared Meta API key resolution for both channels |
 | [`opencode_live.py`](opencode_live.py) / [`opencode-live/`](opencode-live/) | Live OpenCode facilitator |
 | [`hypothesis-opencode-live.md`](hypothesis-opencode-live.md) | Live-harness hypothesis |
 | [`hypothesis-opencode-live-followup.md`](hypothesis-opencode-live-followup.md) | Hypothesis evaluation |

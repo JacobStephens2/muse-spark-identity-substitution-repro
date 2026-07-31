@@ -31,19 +31,20 @@ Auth is stored by OpenCode in `~/.local/share/opencode/auth.json` (not committed
 { "meta": { "type": "api", "key": "..." } }
 ```
 
-This is **separate** from `MODEL_API_KEY` used by `reproduce.py`.
+You can also export **`MODEL_API_KEY`** or **`META_AI_API_KEY`** (same as Channel A). Before trials, `opencode_live.py` calls `ensure_opencode_meta_auth()`: if OpenCode already has a `meta` key it is left alone; if not, the env key is written into `auth.json` (mode `0600` when possible). See [`../meta_auth.py`](../meta_auth.py) and [`.env.example`](../.env.example).
 
 ## Run
 
 From the repo root:
 
 ```bash
+export MODEL_API_KEY="..."   # or META_AI_API_KEY; optional if auth.json already has meta
 python3 opencode_live.py --trials 10
 ```
 
 Options:
 
-- `--dry-run` — print plan only
+- `--dry-run` — print plan only (includes auth status, no secret)
 - `--model meta/muse-spark-1.1`
 - `--no-auto` — do not auto-approve tools (may hang)
 - `--output-dir results/…`

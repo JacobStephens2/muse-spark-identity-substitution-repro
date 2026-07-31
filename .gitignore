@@ -2,3 +2,6 @@ __pycache__/
 *.py[cod]
 *.local.jsonl
 .DS_Store
+.env
+.env.*
+!.env.example
