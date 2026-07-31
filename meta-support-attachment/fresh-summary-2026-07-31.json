@@ -1,0 +1,33 @@
+{
+  "envelopes": {
+    "b12-minimal-neutral.json": {
+      "counts": {
+        "claude_substitution": 6,
+        "muse_exact": 4
+      },
+      "request_sha256": [
+        "a85fcdf143515a2f4d18d113a43cf38c831261fe833dbcad4585e764b0c55570"
+      ],
+      "substitution_rate": 0.6,
+      "substitution_rate_wilson_95": [
+        0.31267376973366456,
+        0.8318196702937597
+      ],
+      "trials": 10
+    },
+    "b2-opencode-write-only.json": {
+      "counts": {
+        "claude_substitution": 10
+      },
+      "request_sha256": [
+        "dfa2912b6184db146ffa07c06ddadffd12317736cf383f42450310fb3b5cf8f9"
+      ],
+      "substitution_rate": 1.0,
+      "substitution_rate_wilson_95": [
+        0.7224672001371218,
+        0.9999999999999999
+      ],
+      "trials": 10
+    }
+  }
+}

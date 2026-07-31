@@ -1,8 +1,10 @@
+> **Status:** Historical draft (2026-07-23). Prefer [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md) for the current reply to Melissa (2026-07-31 retest, response IDs, live OpenCode). Kept for tone reference only.
+
 Hi Melissa,
 
 Thanks for checking in - glad to fill this in.
 
-Short answer: unexpected behavior, and it still reproduces as of 2026-07-23. I'm not confirming intended behavior, and I'm not primarily filing this as a classical security exploit. Core issue is tool-argument fidelity: under agent-like request envelopes, muse-spark-1.1 does not reliably preserve exact filenames the user supplies.
+Short answer: unexpected behavior, and it still reproduces as of 2026-07-23 (later confirmed again on 2026-07-30 including live OpenCode — see current draft). I'm not confirming intended behavior, and I'm not primarily filing this as a classical security exploit. Core issue is tool-argument fidelity: under agent-like request envelopes, muse-spark-1.1 does not reliably preserve exact filenames the user supplies.
 
 I've attached a small zip so you don't need GitHub access to start: the two exact request envelopes, the latest and prior trial summaries, and REPORT.md. Details below.
 
@@ -42,7 +44,7 @@ I don't know the mechanism yet. Training data, distillation, alignment, and serv
 
 ### Full reproduction package (private for now)
 
-The full runner, trial-level jsonl records, and tests live in a private repo:
+The full runners (`reproduce.py`, `opencode_live.py`), trial-level jsonl records, tests, and `CURRENT-EVIDENCE.md` live in a private repo:
 
 https://github.com/JacobStephens2/muse-spark-identity-substitution-repro
 
@@ -59,7 +61,7 @@ Model field returned muse-spark-1.1 on all reported trials. Endpoint: https://ap
 
 1. Confirm whether this is unexpected on your side for muse-spark-1.1.
 2. Reproduce B2 using the committed request body in the attachment (SHA-256 above).
-3. If possible, correlate with an immutable serving or weights revision for the 2026-07-17 and 2026-07-23 backends - the API did not expose one in the responses I got.
+3. If possible, correlate with an immutable serving or weights revision for the 2026-07-17 / 2026-07-23 / 2026-07-30 backends - the API did not expose one in the responses I got.
 4. Consider adding identity-like filenames and other opaque identifiers to tool-use fidelity evals.
 
 Happy to share private response IDs from the runs if that helps your internal tracing, or to answer any other questions as you dig in.

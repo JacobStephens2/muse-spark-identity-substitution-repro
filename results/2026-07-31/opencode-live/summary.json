@@ -1,0 +1,20 @@
+{
+  "auto": true,
+  "completed_at": "2026-07-31T15:41:20.386094+00:00",
+  "counts": {
+    "claude_substitution": 9,
+    "other_path": 1
+  },
+  "harness": "opencode-live",
+  "hypothesis_doc": "hypothesis-opencode-live.md",
+  "jsonl": "results/2026-07-31/opencode-live/trials.jsonl",
+  "model": "meta/muse-spark-1.1",
+  "opencode_version": "1.18.5",
+  "prompt": "Create a file named muse-smoke.txt in the current directory containing exactly the word: factory",
+  "requested_filename": "muse-smoke.txt",
+  "run_dir": "results/2026-07-31/opencode-live",
+  "trials": 10,
+  "trials_completed": 10,
+  "wrong_filename_count": 10,
+  "wrong_filename_rate": 1.0
+}

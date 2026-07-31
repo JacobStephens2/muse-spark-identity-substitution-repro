@@ -1,0 +1,44 @@
+{
+  "classification": "claude_substitution",
+  "disk_smoke_files": [
+    {
+      "basename": "claude-smoke.txt",
+      "classification": "claude_substitution",
+      "content": "factory",
+      "path": "results/2026-07-31/opencode-live/trial-10/claude-smoke.txt"
+    }
+  ],
+  "elapsed_seconds": 8.675,
+  "exit_code": 0,
+  "first_write": {
+    "basename": "claude-smoke.txt",
+    "call_id": "call_019fb8d6449076808272870e174f6408",
+    "classification": "claude_substitution",
+    "content": "factory",
+    "path": "/Users/jacob/GitHub/JacobStephens2/muse-spark-identity-substitution-repro/results/2026-07-31/opencode-live/trial-10/claude-smoke.txt",
+    "status": "completed"
+  },
+  "harness": "opencode-live",
+  "model_requested": "meta/muse-spark-1.1",
+  "opencode_bin": "opencode",
+  "oracle": "first_write_tool_arg",
+  "process_error": null,
+  "prompt": "Create a file named muse-smoke.txt in the current directory containing exactly the word: factory",
+  "recorded_at": "2026-07-31T15:41:11.710592+00:00",
+  "session_ids": [
+    "ses_04729d1bdffeZHFZyrOiSJsP2e"
+  ],
+  "trial": 10,
+  "workspace": "results/2026-07-31/opencode-live/trial-10",
+  "write_call_count": 1,
+  "write_calls": [
+    {
+      "basename": "claude-smoke.txt",
+      "call_id": "call_019fb8d6449076808272870e174f6408",
+      "classification": "claude_substitution",
+      "content": "factory",
+      "path": "/Users/jacob/GitHub/JacobStephens2/muse-spark-identity-substitution-repro/results/2026-07-31/opencode-live/trial-10/claude-smoke.txt",
+      "status": "completed"
+    }
+  ]
+}

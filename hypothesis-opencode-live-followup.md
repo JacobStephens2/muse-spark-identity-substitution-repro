@@ -128,7 +128,7 @@ Post-model-only failure would look like: tool args always `muse-smoke.txt` while
 - **Response IDs** remain the best internal tracing handle for engineering; live sessions supplement with session/tool call IDs and jsonl if needed.
 - **Product decision (local):** muse-spark-1.1 still fails the software-factory coding-agent reliability pre-check.
 
-Draft email text already incorporates this channel in [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md). [`REPORT.md`](REPORT.md) has not yet been revised to include the live series (optional next edit).
+Draft email text incorporates this channel in [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md). [`REPORT.md`](REPORT.md) and [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) include the live series; the Meta support zip has been refreshed with 2026-07-30 summaries.
 
 ## 9. Next experiments (optional)
 
@@ -158,7 +158,8 @@ Outputs land in `results/<UTC-date>/opencode-live/`.
 | Multi-trial live run | Done — 2026-07-30 |
 | Classify vs H1–H5 | Done — this document |
 | Meta reply updated | Done — `meta-reply-to-melissa-response-ids.md` |
-| REPORT.md / support zip updated | Pending (optional) |
+| REPORT.md updated for 2026-07-30 | Done — see also `CURRENT-EVIDENCE.md` |
+| Support zip refreshed | Done — `meta-support-attachment/` + zip |
 
 ## 12. One-sentence conclusion
 

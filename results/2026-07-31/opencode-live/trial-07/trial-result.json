@@ -1,0 +1,28 @@
+{
+  "classification": "other_path",
+  "disk_smoke_files": [
+    {
+      "basename": "opencode-smoke.txt",
+      "classification": "other_path",
+      "content": "factory",
+      "path": "results/2026-07-31/opencode-live/trial-07/opencode-smoke.txt"
+    }
+  ],
+  "elapsed_seconds": 7.347,
+  "exit_code": 0,
+  "first_write": null,
+  "harness": "opencode-live",
+  "model_requested": "meta/muse-spark-1.1",
+  "opencode_bin": "opencode",
+  "oracle": "disk",
+  "process_error": null,
+  "prompt": "Create a file named muse-smoke.txt in the current directory containing exactly the word: factory",
+  "recorded_at": "2026-07-31T15:40:43.961915+00:00",
+  "session_ids": [
+    "ses_0472a3e35ffeIgHabTePqmWTEy"
+  ],
+  "trial": 7,
+  "workspace": "results/2026-07-31/opencode-live/trial-07",
+  "write_call_count": 0,
+  "write_calls": []
+}

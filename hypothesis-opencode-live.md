@@ -74,7 +74,8 @@ To keep the live test comparable to the API replay:
 - [x] Multi-trial live run executed (2026-07-30, OpenCode 1.18.5, 10 trials)
 - [x] Results classified against H1–H5 — **H1 supported; H2 falsified**
 - [x] Meta reply draft updated (`meta-reply-to-melissa-response-ids.md`)
-- [ ] REPORT.md / support zip updated if warranted
+- [x] REPORT.md + CURRENT-EVIDENCE.md updated for 2026-07-30
+- [x] Support zip refreshed (`meta-support-attachment/`)
 
 **Follow-up evaluation:** [`hypothesis-opencode-live-followup.md`](hypothesis-opencode-live-followup.md)
 
