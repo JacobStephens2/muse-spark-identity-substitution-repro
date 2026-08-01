@@ -1,0 +1,1 @@
+{"counts": {"claude_substitution": 10}, "envelope": "b2-opencode-write-only.json", "trials": 10}
