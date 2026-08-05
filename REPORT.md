@@ -8,13 +8,18 @@ frequently returns a `write`-tool argument targeting `claude-smoke.txt`. A more 
 envelope has also produced `cursor-smoke.txt` in earlier observation, and a later retest
 produced `opencode-smoke.txt`.
 
-The behavior remains present as of the latest retests on **2026-07-31**. It is stochastic and
-strongly dependent on the request envelope: the richer captured-OpenCode envelope (B2)
-produced a wrong filename on 10 of 10 latest API-replay trials (all `claude-smoke.txt`),
-while the minimal neutral envelope (B12) substituted on 6 of 10 latest trials. A **live
-OpenCode** harness series the same day also substituted on 10 of 10 trials (9×
+The behavior remained present on **`muse-spark-1.1`** as of retests on **2026-07-31**. It is
+stochastic and strongly dependent on the request envelope: the richer captured-OpenCode
+envelope (B2) produced a wrong filename on 10 of 10 API-replay trials (all
+`claude-smoke.txt`), while the minimal neutral envelope (B12) substituted on 6 of 10 trials.
+A **live OpenCode** harness series the same day also substituted on 10 of 10 trials (9×
 `claude-smoke.txt`, 1× `opencode-smoke.txt`). A prior minimal synthetic control preserved
 the requested filename in 80 of 80 trials, so this is not an unconditional string rewrite.
+
+**`muse-spark-1.2` (2026-08-05):** the same B2 and B12 fixed envelopes and the same live
+OpenCode harness (OpenCode 1.18.5) produced **0 wrong filenames in 30 trials** (B2 0/10,
+B12 0/10, live OpenCode 0/10). Identity substitution as documented for 1.1 was not observed
+on 1.2 under these harnesses.
 
 For a multi-channel artifact map (API replay vs live OpenCode, response ID locations, path
 rewrite notes), see [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md).
@@ -25,18 +30,50 @@ rewrite notes), see [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md).
 |---|---|
 | Historical observation date | 2026-07-17 (recovered from the original experiment transcript) |
 | First committed-runner run | 2026-07-17, 23:10:51Z – 23:16:16Z UTC |
-| Prior retest | 2026-07-30 (API replay + live OpenCode) |
-| Latest retest | 2026-07-31, ~15:37Z – 15:41Z UTC (API replay + live OpenCode) |
-| Model (requested and returned) | `muse-spark-1.1` (API `model` field returned `muse-spark-1.1` on all reported API-replay trials) |
+| Prior retest | 2026-07-30 / 2026-07-31 (`muse-spark-1.1`, API replay + live OpenCode) |
+| Latest retest | 2026-08-05, ~20:22Z – 20:33Z UTC (`muse-spark-1.2`, API replay + live OpenCode) |
+| Model (1.1 series) | `muse-spark-1.1` (API `model` field returned `muse-spark-1.1` on all reported API-replay trials) |
+| Model (1.2 series) | `muse-spark-1.2` / live `meta/muse-spark-1.2` (API returned `muse-spark-1.2` on all Channel A trials) |
 | API endpoint | `https://api.meta.ai/v1/responses` (Meta Model Responses API) |
 | Capturing harness (original) | OpenCode 1.18.3 |
-| Live harness retest | OpenCode 1.18.5 (`opencode_live.py`, model `meta/muse-spark-1.1`) |
+| Live harness retest | OpenCode 1.18.5 (`opencode_live.py`) |
 | Replay client | Python standard library, no harness runtime (`reproduce.py`) |
 | Tool execution (API replay) | Disabled — returned calls were inspected but never executed |
 | Tool execution (live OpenCode) | Enabled under `--auto` in disposable trial workspaces |
 | Reproduction repository commit | repository HEAD at submission (exact SHA recorded in the private submission packet) |
 
-## Latest retest results (2026-07-31)
+## Latest retest results (2026-08-05, `muse-spark-1.2`)
+
+### Fixed envelope API replay
+
+Same B2/B12 bodies as the 1.1 series with only `"model": "muse-spark-1.2"`. Ten trials per
+envelope, tool execution disabled, response IDs retained. Trial records:
+`results/2026-08-05/b2.1.2.jsonl` and `results/2026-08-05/b12.1.2.jsonl`. Summary:
+`results/2026-08-05/fresh-summary.json`.
+
+| Envelope | Trials | Classifications | Substitution rate | Wilson 95% CI |
+|---|---:|---|---:|---|
+| B2: captured OpenCode system prompt, only the `write` tool | 10 | 10 `muse_exact` | 0% | [0.00, 0.28] |
+| B12: one-line system prompt, neutral write description, unquoted user request | 10 | 10 `muse_exact` | 0% | [0.00, 0.28] |
+
+All 20 API-replay trials returned HTTP 200 and model field `muse-spark-1.2`. B2 paths stayed
+`/tmp/muse-opencode-envelope/muse-smoke.txt` (no directory-token rewrite). Content remained
+`factory` on all trials.
+
+### Live OpenCode harness (`opencode_live.py`)
+
+Ten independent one-shot sessions, OpenCode 1.18.5, model `meta/muse-spark-1.2`, same user
+prompt as B12. Artifacts: `results/2026-08-05/opencode-live/`.
+
+| Harness | Trials | Classifications | Substitution rate |
+|---|---:|---|---:|
+| Live OpenCode | 10 | 10 `muse_exact` | 0% |
+
+Oracle mix: 5× first `write` tool `filePath`, 5× on-disk only (bash `printf` created
+`muse-smoke.txt`). All disk files named `muse-smoke.txt` with content `factory`. No
+`claude-` basenames or parent-path identity rewrites.
+
+## Prior retest results (2026-07-31, `muse-spark-1.1`)
 
 ### Fixed envelope API replay (`reproduce.py`)
 

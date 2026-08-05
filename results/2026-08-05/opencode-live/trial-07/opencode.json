@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "meta/muse-spark-1.2",
+  "provider": {
+    "meta": {
+      "name": "Meta Model API",
+      "npm": "@ai-sdk/openai",
+      "options": {
+        "baseURL": "https://api.meta.ai/v1"
+      },
+      "models": {
+        "muse-spark-1.1": {
+          "name": "Muse Spark 1.1"
+        },
+        "muse-spark-1.2": {
+          "name": "Muse Spark 1.2"
+        }
+      }
+    }
+  }
+}

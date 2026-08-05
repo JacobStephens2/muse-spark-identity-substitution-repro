@@ -2,7 +2,7 @@
 
 This repository isolates a filename-fidelity defect observed while evaluating Meta's `muse-spark-1.1` for agentic coding work. Under some agent-like request envelopes, a request to write `muse-smoke.txt` produces a tool argument targeting `claude-smoke.txt`. Related runs have also produced `cursor-smoke.txt` and `opencode-smoke.txt`.
 
-The behavior is stochastic and strongly dependent on the request envelope. A minimal synthetic tool-calling control preserved all requested filenames in 80 of 80 trials. The captured OpenCode-style envelope (B2) has produced wrong filenames on all trials in every committed API-replay series. A **live OpenCode** retest (latest 2026-07-31, OpenCode 1.18.5) also produced **10/10** wrong basenames (mostly `claude-smoke.txt`).
+The behavior is stochastic and strongly dependent on the request envelope. A minimal synthetic tool-calling control preserved all requested filenames in 80 of 80 trials. On **`muse-spark-1.1`**, the captured OpenCode-style envelope (B2) produced wrong filenames on all trials in every committed API-replay series, and live OpenCode (2026-07-31, OpenCode 1.18.5) produced **10/10** wrong basenames (mostly `claude-smoke.txt`). A **2026-08-05 retest of `muse-spark-1.2`** on the same B2/B12 envelopes and live OpenCode harness produced **0/30** wrong basenames.
 
 This is a private staging repository. It is being prepared for an upstream report and has not yet been approved for public release.
 
@@ -101,8 +101,10 @@ Committed machine-readable retests:
 | 2026-07-23 | [`results/2026-07-22/`](results/2026-07-22/) | B2 10/10 wrong (9 `claude`, 1 `opencode`); B12 3/10 wrong |
 | 2026-07-30 API replay | [`results/2026-07-30/b*.fresh.jsonl`](results/2026-07-30/) | B2 10/10 wrong; B12 4/10 wrong; response IDs retained |
 | 2026-07-30 live OpenCode | [`results/2026-07-30/opencode-live/`](results/2026-07-30/opencode-live/) | 10/10 `claude-smoke.txt` |
-| **2026-07-31 API replay** | [`results/2026-07-31/b*.fresh.jsonl`](results/2026-07-31/) | B2 **10/10** wrong; B12 **6/10** wrong; **response IDs retained** |
-| **2026-07-31 live OpenCode** | [`results/2026-07-31/opencode-live/`](results/2026-07-31/opencode-live/) | **10/10** wrong (9 `claude`, 1 `opencode`) |
+| 2026-07-31 API replay | [`results/2026-07-31/b*.fresh.jsonl`](results/2026-07-31/) | B2 **10/10** wrong; B12 **6/10** wrong; **response IDs retained** (`1.1`) |
+| 2026-07-31 live OpenCode | [`results/2026-07-31/opencode-live/`](results/2026-07-31/opencode-live/) | **10/10** wrong (9 `claude`, 1 `opencode`) (`1.1`) |
+| **2026-08-05 API replay** | [`results/2026-08-05/b*.1.2.jsonl`](results/2026-08-05/) | B2 **0/10** wrong; B12 **0/10** wrong; **`muse-spark-1.2`**; response IDs retained |
+| **2026-08-05 live OpenCode** | [`results/2026-08-05/opencode-live/`](results/2026-08-05/opencode-live/) | **0/10** wrong; **`meta/muse-spark-1.2`** |
 
 [`results/2026-07-17/observed-summary.json`](results/2026-07-17/observed-summary.json) is the original investigation console summary only; it is not output from the committed runner.
 

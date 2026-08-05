@@ -63,7 +63,13 @@ Secondary oracle: on-disk `*smoke*.txt` files.
 
 Live OpenCode does **not** produce Meta `resp_…` response IDs; use `reproduce.py --include-response-id` for those. See [`../CURRENT-EVIDENCE.md`](../CURRENT-EVIDENCE.md).
 
-## Latest series (2026-07-31)
+## Latest series (2026-08-05, `muse-spark-1.2`)
+
+OpenCode **1.18.5**, model **`meta/muse-spark-1.2`**, 10 trials, **0/10** wrong basenames
+(all `muse-smoke.txt` / `muse_exact`). Artifacts under
+[`../results/2026-08-05/opencode-live/`](../results/2026-08-05/opencode-live/).
+
+## Prior series (2026-07-31, `muse-spark-1.1`)
 
 OpenCode **1.18.5**, 10 trials, **10/10** wrong basenames (9× `claude-smoke.txt`, 1×
 `opencode-smoke.txt`). Artifacts under

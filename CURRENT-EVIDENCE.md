@@ -1,4 +1,4 @@
-# Current evidence map (as of 2026-07-31)
+# Current evidence map (as of 2026-08-05)
 
 This document consolidates **what is known now**, **which channel produced it**, and **where the machine-readable artifacts live**. It is intentionally operational: gaps that only live in email drafts, chat, or one-off trial folders should land here or in the linked primary docs.
 
@@ -19,7 +19,9 @@ Related documents:
 
 ## 1. Defect in one paragraph
 
-Under agent-like context, `muse-spark-1.1` often changes an exact user-supplied write path so that a request for `muse-smoke.txt` becomes a tool argument (and, when tools run, a file) targeting an identity-substituted name such as `claude-smoke.txt`. The request bodies used in fixed-envelope tests contain **zero** case-insensitive `claude` / `anthropic`. Content is often still exactly `factory`. The behavior is **context-conditional** (minimal synthetic control 80/80 exact historically; B12 stochastic; B2 and live OpenCode ~100% wrong on recent series).
+Under agent-like context, **`muse-spark-1.1`** often changes an exact user-supplied write path so that a request for `muse-smoke.txt` becomes a tool argument (and, when tools run, a file) targeting an identity-substituted name such as `claude-smoke.txt`. The request bodies used in fixed-envelope tests contain **zero** case-insensitive `claude` / `anthropic`. Content is often still exactly `factory`. On 1.1 the behavior is **context-conditional** (minimal synthetic control 80/80 exact historically; B12 stochastic; B2 and live OpenCode ~100% wrong on 2026-07-31).
+
+**`muse-spark-1.2` retest (2026-08-05):** the same B2/B12 fixed envelopes and live OpenCode harness produced **0/30** wrong basenames (API B2 0/10, API B12 0/10, live OpenCode 0/10). Identity substitution as documented for 1.1 was **not** observed on 1.2.
 
 ## 2. Evidence channels (do not conflate)
 
@@ -72,10 +74,12 @@ Credential for Channel A: **`MODEL_API_KEY`** or **`META_AI_API_KEY`** (resolved
 | 2026-07-23 runner | A | [`results/2026-07-22/`](results/2026-07-22/) | B2 10/10 (9 claude, 1 opencode); B12 3/10 | Dir name is local date |
 | 2026-07-30 runner | A | [`results/2026-07-30/b2.fresh.jsonl`](results/2026-07-30/b2.fresh.jsonl), [`b12.fresh.jsonl`](results/2026-07-30/b12.fresh.jsonl) | B2 10/10; B12 4/10 | Committed jsonl **with** `response_id` on every trial |
 | 2026-07-30 live OpenCode | B | [`results/2026-07-30/opencode-live/`](results/2026-07-30/opencode-live/) | 10/10 | All `claude-smoke.txt` |
-| **2026-07-31 runner** | A | [`results/2026-07-31/b2.fresh.jsonl`](results/2026-07-31/b2.fresh.jsonl), [`b12.fresh.jsonl`](results/2026-07-31/b12.fresh.jsonl) | B2 **10/10**; B12 **6/10** | Committed jsonl **with** `response_id` on every trial |
-| **2026-07-31 live OpenCode** | B | [`results/2026-07-31/opencode-live/`](results/2026-07-31/opencode-live/) | **10/10** | 9× `claude-smoke.txt`, 1× `opencode-smoke.txt` |
+| 2026-07-31 runner | A | [`results/2026-07-31/b2.fresh.jsonl`](results/2026-07-31/b2.fresh.jsonl), [`b12.fresh.jsonl`](results/2026-07-31/b12.fresh.jsonl) | B2 **10/10**; B12 **6/10** | `muse-spark-1.1`; response IDs retained |
+| 2026-07-31 live OpenCode | B | [`results/2026-07-31/opencode-live/`](results/2026-07-31/opencode-live/) | **10/10** | `muse-spark-1.1`; 9× `claude`, 1× `opencode` |
+| **2026-08-05 runner** | A | [`results/2026-08-05/b2.1.2.jsonl`](results/2026-08-05/b2.1.2.jsonl), [`b12.1.2.jsonl`](results/2026-08-05/b12.1.2.jsonl) | B2 **0/10**; B12 **0/10** | **`muse-spark-1.2`**; all `muse_exact`; response IDs retained |
+| **2026-08-05 live OpenCode** | B | [`results/2026-08-05/opencode-live/`](results/2026-08-05/opencode-live/) | **0/10** | **`meta/muse-spark-1.2`**; OpenCode 1.18.5; all `muse_exact` |
 
-**Same-day multi-channel snapshot (2026-07-31):**
+**Same-day multi-channel snapshot (2026-07-31, `muse-spark-1.1`):**
 
 | Channel | Wrong-filename rate | Exact `muse-smoke.txt` |
 |---|---:|---:|
@@ -83,14 +87,30 @@ Credential for Channel A: **`MODEL_API_KEY`** or **`META_AI_API_KEY`** (resolved
 | B12 API replay | 60% | 4/10 |
 | Live OpenCode | 100% | 0/10 |
 
+**Same-day multi-channel snapshot (2026-08-05, `muse-spark-1.2`):**
+
+| Channel | Wrong-filename rate | Exact `muse-smoke.txt` |
+|---|---:|---:|
+| B2 API replay | 0% | 10/10 |
+| B12 API replay | 0% | 10/10 |
+| Live OpenCode | 0% | 10/10 |
+
+Notes on the 1.2 series:
+
+- Channel A used the same B2/B12 request bodies as 1.1 except `"model": "muse-spark-1.2"` (B2 system prompt still names Muse Spark / OpenCode; zero `claude`/`anthropic` tokens).
+- B2 paths stayed `/tmp/muse-opencode-envelope/muse-smoke.txt` (no directory-token rewrite).
+- Live OpenCode: 5/10 trials used the `write` tool; 5/10 created the file via bash (`printf … > muse-smoke.txt`). Both paths kept the exact basename. No `claude-` / path-token rewrites observed.
+- See [`results/2026-08-05/fresh-summary.json`](results/2026-08-05/fresh-summary.json) and [`results/2026-08-05/opencode-live/summary.json`](results/2026-08-05/opencode-live/summary.json).
+
 ## 4. Response IDs (Channel A only)
 
 Melissa’s engineering request was for **Meta response IDs** on affected API calls. Those exist only for Channel A.
 
 | Series | Where IDs live |
 |---|---|
-| **2026-07-31 B2** (all 10 substituted) | Each line of `results/2026-07-31/b2.fresh.jsonl` → field `response_id` |
-| **2026-07-31 B12** (all 10; 6 substituted) | Each line of `results/2026-07-31/b12.fresh.jsonl` → field `response_id` |
+| **2026-08-05 B2/B12 (`muse-spark-1.2`, all exact)** | `results/2026-08-05/b2.1.2.jsonl`, `b12.1.2.jsonl` → `response_id` |
+| 2026-07-31 B2 (all 10 substituted) | Each line of `results/2026-07-31/b2.fresh.jsonl` → field `response_id` |
+| 2026-07-31 B12 (all 10; 6 substituted) | Each line of `results/2026-07-31/b12.fresh.jsonl` → field `response_id` |
 | 2026-07-30 B2 / B12 | `results/2026-07-30/b*.fresh.jsonl` |
 | Human-readable tables | [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md) |
 | 2026-07-17 | Originally captured with IDs; **committed** `results/2026-07-17/*.fresh.jsonl` had IDs stripped (older process). Do not assume IDs are in that tree. |
