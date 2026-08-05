@@ -4,7 +4,7 @@
 **Scope:** Reliability / tool-use fidelity write-up about `muse-spark-1.1` identity-like path substitution under agentic context — not a security advisory process unless Meta or facts force that reframe.  
 **Related:** [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) (rates), [`REPORT.md`](REPORT.md) (vendor narrative), [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md) (private email draft), [`README.md`](README.md) (repo still private staging).
 
-**Last reviewed:** 2026-07-31
+**Last reviewed:** 2026-08-05
 
 ---
 
@@ -12,14 +12,53 @@
 
 | Item | Status |
 |---|---|
-| Public blog post | **Do not publish yet** |
+| Public blog post | **Near-ready for a “1.1 broken / 1.2 clear” post** — handoff done; fair window still short of the full 1–2 weeks (see §1.1) |
 | Existing Muse-specific blog post | **None found** (personal blog / portfolio have other agent posts; no Muse Spark identity-substitution article) |
-| Private Meta channel | Open — response IDs + 2026-07-31 retest in reply draft; confirm whether latest draft was **sent** |
+| Private Meta channel | **Delivered** — Melissa email sent **2026-07-31 ~11:46 local** with rates, OpenCode/factory-seat impact, envelope SHAs, and full B2/B12 `resp_…` tables |
 | Private repro repo | Still private; README: not approved for public release |
-| Evidence maturity for a technical post | **High** (multi-day B2 100%, live OpenCode 100%, B12 stochastic) |
+| Evidence maturity for a technical post | **High** for 1.1 failure *and* for 1.2 clearance (2026-08-05: B2 0/10, B12 0/10, live OpenCode 0/10) |
 
-**Default path:** finish private handoff → fair vendor window → then draft/publish.  
+**Default path:** private handoff is done → optional short remaining fair window / ToS check → draft “was broken / now clear on 1.2” → scrub → publish.  
 **Not waiting for:** root cause, immutable serving revision, or Meta’s permanent blessing.
+
+### 1.1 Green-light checklist (as of 2026-08-05)
+
+| ID | Condition | Status |
+|---|---|---|
+| **A** | Private report delivered | **Yes** — sent 2026-07-31 11:46 (rates + response IDs + impact) |
+| **B** | Fair window | **Partial** — ~5 calendar days since send as of 2026-08-05; full 1–2 weeks would be ~2026-08-07 to 2026-08-14. Softeners: issue framed as fidelity (not security); 1.2 retest is a collaborative “cleared” ending, not an open attack. Still no recorded Meta ask for a hold. |
+| **C** | Stalemate after handoff | N/A while B is the preferred path |
+| **D** | No contractual bar | **Checked 2026-08-05** — see **§1.2**. No blanket ban on a reliability write-up; avoid competitive-marketing benchmark framing and secrets |
+| **E** | Facts still hold / dated history | **Yes** — 1.1 multi-day failure series; 1.2 multi-channel 0/30 wrong |
+| **F** | Scrubbed artifacts ready | **Before publish** — omit `resp_…`, full email text, secrets, `$HOME` paths |
+
+**Practical recommendation:** Safe to **finish the draft now**. Prefer publishing on/after **~2026-08-07** (one week from send) unless Meta requested a hold. If publishing sooner, keep tone factual and credit private report + 1.2 clearance; do not claim Meta closed *your* ticket or that 1.2 was shipped *because of* the report unless they said so.
+
+### 1.2 Contractual / ToS check (Gate D) — 2026-08-05
+
+**Sources reviewed (public, self-serve Meta Model API preview terms):**
+
+| Doc | URL |
+|---|---|
+| Meta Model API Terms of Service | https://ai.developer.meta.com/legal/terms-of-service (also https://dev.meta.ai/legal/terms-of-service) |
+| Meta Model API Acceptable Use Policy | https://dev.meta.ai/legal/acceptable-use-policy |
+| Geographic / model designation policy (linked from ToS) | https://ai.developer.meta.com/legal/geographic-use-policy |
+
+ToS header notes (as extracted 2026-08-05): *“These Terms govern your access to and use of the Services for a **limited preview period**.”* Last updated **August 5, 2026**. Meta may update terms upon general public availability.
+
+**Not reviewed / unknown:** any separate signed NDA, enterprise MSA, or private-partner addendum beyond the click-through Model API ToS. If you only used ordinary self-serve API access, the public ToS is the controlling public instrument.
+
+| Topic | Finding | Blog implication |
+|---|---|---|
+| Blanket ban on discussing model behavior | **Not found** | Reliability narrative not per se forbidden |
+| **§10.1(ix)** competing models / training | Ban on using Services/Outputs to train/improve competing models or systematically collect outputs for competing training data; **carve-out:** use solely for **evaluation, benchmarking, or quality assessment of your own systems** is not prohibited under that clause | Factory-seat / own-harness evaluation is aligned with the carve-out |
+| **§10.1(xi)** public benchmarks | **Material clause:** you agree not to *“publicly disseminate performance benchmarks or evaluations of the Services **for the purpose of promoting or marketing a competing product or service**”* without Meta’s prior written authorization | Purpose-based. A factual “I evaluated Muse for my coding factory; 1.1 failed path fidelity; 1.2 cleared” post is **not** the same as marketing Claude/OpenAI/etc. Avoid “switch to X competitor” sales framing, affiliate-style competitor pitches, or leaderboard dunking that reads as promo for a rival |
+| **§10.1(x)** reverse engineering / model extraction | Prohibits reverse engineering / systematic extraction of weights, algorithms, etc. | Stick to filename/tool-arg fidelity; don’t describe extraction or weight recovery |
+| **§12 Confidentiality** | Protects non-public info disclosed by a party that is marked confidential or reasonably confidential (**including Account-related info**). API keys are confidential (elsewhere: do not share keys) | **Omit** API keys, auth material, private account internals. Observed model outputs on your own prompts are not clearly Meta Confidential Information, but **omit `resp_…` IDs** from the public post (vendor hygiene + avoid account-adjacent identifiers) |
+| Feedback | Meta may freely use/disclose Feedback; Feedback is not your Confidential Information | Private Melissa report is fine; blog can paraphrase process, not paste support email |
+| AUP | Bans unauthorized vulnerability exploitation, bypassing safety/rate controls, etc.; Meta may grant exceptions for legitimate cybersecurity research | Frame as **tool-use fidelity / reliability**, not a security exploit write-up; no need to claim AUP research exception |
+
+**Gate D conclusion (operator judgment, not legal advice):** For a scrubbed **reliability / engineering-experience** post about 1.1 path substitution and 1.2 clearance under your own OpenCode/factory evaluation, the **public Meta Model API ToS does not appear to impose a hard ban**. The main risk clause is **§10.1(xi)** — keep the purpose **your evaluation and factory-seat decision**, not promoting a competing product. Re-read the live ToS before publish (terms can change). This is **not legal advice**.
 
 Update this section when the recommendation changes.
 
@@ -149,10 +188,10 @@ When a Muse post is created, record its path/URL here:
 
 | Milestone | Target / actual | Done? |
 |---|---|---|
-| Send Melissa reply with 2026-07-31 IDs + impact framing | — | [ ] |
-| Meta acknowledges / engineering has package | — | [ ] |
-| Fair window end date (e.g. send date + 14 days) | — | [ ] |
-| Optional retest immediately before publish | — | [ ] |
+| Send Melissa reply with 2026-07-31 IDs + impact framing | **2026-07-31 ~11:46 local** (sent) | [x] |
+| Meta acknowledges / engineering has package | — (behavioral: 1.2 clear on 2026-08-05 retest; no ticket-closed note on file) | [ ] |
+| Fair window end date (send + 7d / +14d) | **2026-08-07** / **2026-08-14** | [ ] |
+| Optional retest immediately before publish | **2026-08-05** 1.2 multi-channel 0/30 (done; optional 1.1 spot-check if still claiming live 1.1 breakage) | [x] |
 | Blog draft complete + scrubbed | — | [ ] |
 | Publish | — | [ ] |
 | If repro goes public: link from post | — | [ ] |

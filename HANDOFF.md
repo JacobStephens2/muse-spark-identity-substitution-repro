@@ -9,7 +9,7 @@
 
 ## One-line state
 
-Meta (`muse-spark-1.1`) still substitutes identity-like filenames in write-tool args; **2026-07-31** retests confirm no fix (B2 10/10, B12 6/10, live OpenCode 10/10 wrong). Melissa reply draft has today’s rates + response IDs and OpenCode/factory-seat impact framing. Results and docs updated for this series.
+**1.1** failed multi-channel through **2026-07-31** (B2/live 100% wrong). Melissa package **sent 2026-07-31 ~11:46** (rates + `resp_…` IDs + factory-seat impact). **1.2** retest **2026-08-05**: B2/B12/live all **0/10** wrong. Publication: handoff done; fair window short of full 1–2 weeks — see `PUBLICATION-DECISION.md`.
 
 ---
 
@@ -65,10 +65,10 @@ Meta (`muse-spark-1.1`) still substitutes identity-like filenames in write-tool 
 
 ## Likely next tasks (user-dependent)
 
-1. **Send** Melissa reply (user; not agent) — draft: `meta-reply-to-melissa-response-ids.md`.
-2. **Publication:** do **not** blog yet; criteria and update rules in `PUBLICATION-DECISION.md`.
-3. Optional: further experiments in `hypothesis-opencode-live-followup.md` §9 (only if asked).
-4. Do **not** claim live OpenCode produced Meta response IDs.
+1. ~~**Send** Melissa reply~~ — **done 2026-07-31 ~11:46** (rates + response IDs).
+2. **Publication:** near-ready for “1.1 broken / 1.2 clear” post; prefer ~**2026-08-07+** fair window, ToS check, scrub — `PUBLICATION-DECISION.md`.
+3. Optional: short Melissa follow-up with 1.2 0/30 retest (close loop) before or with the post.
+4. Do **not** claim live OpenCode produced Meta response IDs; do **not** claim Meta closed the ticket solely because 1.2 is clear unless they said so.
 
 ---
 
