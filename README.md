@@ -105,10 +105,13 @@ Committed machine-readable retests:
 | 2026-07-31 live OpenCode | [`results/2026-07-31/opencode-live/`](results/2026-07-31/opencode-live/) | **10/10** wrong (9 `claude`, 1 `opencode`) (`1.1`) |
 | **2026-08-05 API replay** | [`results/2026-08-05/b*.1.2.jsonl`](results/2026-08-05/) | B2 **0/10** wrong; B12 **0/10** wrong; **`muse-spark-1.2`**; response IDs retained |
 | **2026-08-05 live OpenCode** | [`results/2026-08-05/opencode-live/`](results/2026-08-05/opencode-live/) | **0/10** wrong; **`meta/muse-spark-1.2`** |
+| **2026-08-05 Muse Code smoke** | [`results/2026-08-05/muse-code/`](results/2026-08-05/muse-code/) | Harness smoke only (`hello.py`); **not** an N=10 identity-sub series; see [`muse-code.md`](muse-code.md) |
 
 [`results/2026-07-17/observed-summary.json`](results/2026-07-17/observed-summary.json) is the original investigation console summary only; it is not output from the committed runner.
 
 See [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) for the multi-channel map and [`REPORT.md`](REPORT.md) for the vendor-facing narrative.
+
+**Muse Code** (Meta’s first-party coding agent, released with Muse Spark 1.2) is a **harness**, not a separate model. Comparison to OpenCode and a local smoke run: [`muse-code.md`](muse-code.md).
 
 ## Document index
 
@@ -116,6 +119,7 @@ See [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) for the multi-channel map and [
 |---|---|
 | [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) | What is known today; channels; response ID locations |
 | [`REPORT.md`](REPORT.md) | Vendor-facing write-up |
+| [`muse-code.md`](muse-code.md) | Muse Code harness notes; vs OpenCode; 2026-08-05 smoke |
 | [`meta_auth.py`](meta_auth.py) / [`.env.example`](.env.example) | Shared Meta API key resolution for both channels |
 | [`PUBLICATION-DECISION.md`](PUBLICATION-DECISION.md) | When to publish or update a public blog post |
 | [`opencode_live.py`](opencode_live.py) / [`opencode-live/`](opencode-live/) | Live OpenCode facilitator |

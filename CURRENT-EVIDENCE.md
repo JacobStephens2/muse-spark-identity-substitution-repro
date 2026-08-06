@@ -8,6 +8,7 @@ Related documents:
 |---|---|
 | [`README.md`](README.md) | Repo entry point, how to run both channels |
 | [`REPORT.md`](REPORT.md) | Vendor-facing narrative |
+| [`muse-code.md`](muse-code.md) | Muse Code harness notes, smoke run, vs OpenCode |
 | [`hypothesis-opencode-live.md`](hypothesis-opencode-live.md) | Pre-registered live-OpenCode hypothesis |
 | [`hypothesis-opencode-live-followup.md`](hypothesis-opencode-live-followup.md) | H1–H5 evaluation after live run |
 | [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md) | **Current** Melissa reply draft (response IDs) |
@@ -25,13 +26,16 @@ Under agent-like context, **`muse-spark-1.1`** often changes an exact user-suppl
 
 ## 2. Evidence channels (do not conflate)
 
-There are **three distinct channels**. Counts from one channel must not be presented as another.
+There are **four distinct channels**. Counts from one channel must not be presented as another.
 
 | Channel | Runner | What it measures | Tools executed? | Meta `resp_…` IDs? |
 |---|---|---|---|---|
 | **A. Fixed envelope API replay** | [`reproduce.py`](reproduce.py) | Model output given a frozen JSON body (B2 or B12) | **No** — inspect only | **Yes** if `--include-response-id` |
 | **B. Live OpenCode harness** | [`opencode_live.py`](opencode_live.py) | Full agent session (`opencode run`) with normal tools | **Yes** when `--auto` (default) | **No** — session/tool ids only |
 | **C. Historical console summary** | original investigation notes | Early exploratory rates | No | Not in committed runner form |
+| **D. Muse Code harness (exploratory)** | local `muse exec` (see [`muse-code.md`](muse-code.md)) | First-party Meta agent loop on Muse Spark | **Yes** (smoke run) | **Yes** in agent JSONL (observed 2026-08-05) |
+
+**Channel D is not a multi-trial identity-substitution series.** As of 2026-08-05 it is a single disposable-workspace smoke (`hello.py`), retained for harness facts and response IDs. Do not merge D into A/B rate tables.
 
 ### Channel A — fixed envelopes
 
@@ -78,6 +82,7 @@ Credential for Channel A: **`MODEL_API_KEY`** or **`META_AI_API_KEY`** (resolved
 | 2026-07-31 live OpenCode | B | [`results/2026-07-31/opencode-live/`](results/2026-07-31/opencode-live/) | **10/10** | `muse-spark-1.1`; 9× `claude`, 1× `opencode` |
 | **2026-08-05 runner** | A | [`results/2026-08-05/b2.1.2.jsonl`](results/2026-08-05/b2.1.2.jsonl), [`b12.1.2.jsonl`](results/2026-08-05/b12.1.2.jsonl) | B2 **0/10**; B12 **0/10** | **`muse-spark-1.2`**; all `muse_exact`; response IDs retained |
 | **2026-08-05 live OpenCode** | B | [`results/2026-08-05/opencode-live/`](results/2026-08-05/opencode-live/) | **0/10** | **`meta/muse-spark-1.2`**; OpenCode 1.18.5; all `muse_exact` |
+| **2026-08-05 Muse Code smoke** | D | [`results/2026-08-05/muse-code/`](results/2026-08-05/muse-code/) | **n/a** (not `muse-smoke` protocol) | Muse Code **0.1.0-R708.1**; model **`muse-spark-1.2-contributor`**; `write_file` → `hello.py` exact; Meta `resp_…` in events; see [`muse-code.md`](muse-code.md) |
 
 **Same-day multi-channel snapshot (2026-07-31, `muse-spark-1.1`):**
 
@@ -102,13 +107,14 @@ Notes on the 1.2 series:
 - Live OpenCode: 5/10 trials used the `write` tool; 5/10 created the file via bash (`printf … > muse-smoke.txt`). Both paths kept the exact basename. No `claude-` / path-token rewrites observed.
 - See [`results/2026-08-05/fresh-summary.json`](results/2026-08-05/fresh-summary.json) and [`results/2026-08-05/opencode-live/summary.json`](results/2026-08-05/opencode-live/summary.json).
 
-## 4. Response IDs (Channel A only)
+## 4. Response IDs (Channel A; also Channel D smoke)
 
-Melissa’s engineering request was for **Meta response IDs** on affected API calls. Those exist only for Channel A.
+Melissa’s engineering request was for **Meta response IDs** on affected API calls. Systematic multi-trial IDs in this repo come from **Channel A**. **Channel D** (Muse Code) also exposed Meta `resp_…` values in agent event JSONL on the 2026-08-05 smoke run. **Channel B** (live OpenCode) still does not.
 
 | Series | Where IDs live |
 |---|---|
 | **2026-08-05 B2/B12 (`muse-spark-1.2`, all exact)** | `results/2026-08-05/b2.1.2.jsonl`, `b12.1.2.jsonl` → `response_id` |
+| **2026-08-05 Muse Code smoke** | `results/2026-08-05/muse-code/summary.json` → `response_ids`; also in `events.jsonl` |
 | 2026-07-31 B2 (all 10 substituted) | Each line of `results/2026-07-31/b2.fresh.jsonl` → field `response_id` |
 | 2026-07-31 B12 (all 10; 6 substituted) | Each line of `results/2026-07-31/b12.fresh.jsonl` → field `response_id` |
 | 2026-07-30 B2 / B12 | `results/2026-07-30/b*.fresh.jsonl` |
@@ -188,8 +194,19 @@ Meta has framed the issue internally as **tool-use fidelity** (model introduces 
 - Root cause (training data, distillation, alignment, serving-layer rewrite, etc.)
 - Immutable serving / weights revision for any series (API responses used here do not expose one)
 - Rates under other coding harnesses (Cursor, Codex, Claude Code, custom factory runners)
+- **Multi-trial identity-substitution rates under Muse Code** (Channel D has only a single `hello.py` smoke as of 2026-08-05 — see [`muse-code.md`](muse-code.md))
 - Behavior on multi-file edits, renames, or non-identity basenames (UUID-only names, etc.) under live OpenCode
 - Whether a future backend change has fixed the defect (needs retest + ideally a revision marker)
+
+### 8.1 Muse Code vs OpenCode (summary)
+
+Muse Code is Meta’s **first-party harness**; OpenCode is a **third-party multi-model harness**. Both can drive Muse Spark 1.2. Full comparison: [`muse-code.md`](muse-code.md) §3.
+
+| | Muse Code + 1.2 | OpenCode + 1.2 (repo) |
+|---|---|---|
+| Model id observed | `muse-spark-1.2-contributor` (default) | `meta/muse-spark-1.2` |
+| Identity-sub multi-trial | Not run | **0/10** wrong (2026-08-05) |
+| Meta `resp_…` in agent events | Yes (smoke) | No |
 
 ## 9. How to re-run
 
@@ -216,4 +233,4 @@ When a new series is run:
 1. Land machine-readable artifacts under `results/<date>/…`
 2. Update **this file’s rate table** (section 3) the same day
 3. Update [`REPORT.md`](REPORT.md) “latest retest” if the series is vendor-facing
-4. Keep Channel A vs B labels explicit so response IDs are never claimed for live OpenCode runs
+4. Keep Channel A vs B vs D labels explicit so response IDs are never claimed for live OpenCode runs, and Muse Code smoke is never counted as an N=10 identity-sub series

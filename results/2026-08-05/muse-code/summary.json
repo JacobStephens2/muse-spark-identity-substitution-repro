@@ -1,0 +1,72 @@
+{
+  "date": "2026-08-05",
+  "channel": "muse_code_smoke",
+  "cli": "Muse Code 0.1.0 (0.1.0-R708.1)",
+  "install": "curl -fsSL https://dev.meta.ai/install.sh | bash",
+  "command_summary": "muse exec --json --workspace <tmpdir> --disable-approval --trust-workspace --max-model-steps 15 --reasoning-effort low",
+  "prompt": "Create a file hello.py that prints 'Hello from Muse Code' when run. Then run it with python3 and confirm the output. Keep changes minimal.",
+  "workspace_note": "disposable /tmp/muse-code-tryout.* (not the repro repo)",
+  "session_id": "35f68cdf-cb17-4e43-9401-4accf3844729",
+  "model_id": "muse-spark-1.2-contributor",
+  "model_catalog_defaults": {
+    "default": "muse-spark-1.2-contributor",
+    "also_listed": [
+      "muse-spark-1.2"
+    ],
+    "context_limit": 1007997
+  },
+  "exit_code": 0,
+  "terminal": {
+    "terminal": "completed",
+    "text": "Created [hello.py](hello.py:1) and verified output:\n\n```\nHello from Muse Code\n```"
+  },
+  "assistant_text": "Created [hello.py](hello.py:1) and verified output:\n\n```\nHello from Muse Code\n```",
+  "tools": [
+    {
+      "tool_name": "write_file",
+      "call_id": "call_019fd4bac7c376629dbc683a96b57c4c",
+      "text": "wrote 30 bytes to /private/tmp/muse-code-tryout.n9hkQX/hello.py",
+      "edit_facts": {
+        "tool_name": "write_file",
+        "path": "hello.py",
+        "added": 1
+      },
+      "outcome": "success"
+    },
+    {
+      "tool_name": "bash",
+      "call_id": "call_019fd4bacbc07c239b98f18d32882804",
+      "text": "{\n  \"chunk_id\": \"exec-1-1\",\n  \"command\": \"python3 hello.py\",\n  \"description\": \"Run hello.py\",\n  \"exit_code\": 0,\n  \"terminal_status\": \"completed\",\n  \"output\": \"Hello from Muse Code\\n\",\n  \"original_output_bytes\": 21,\n  \"original_output_tokens\": 6,\n  \"truncated\": false\n}",
+      "edit_facts": null,
+      "outcome": "success"
+    }
+  ],
+  "response_ids": [
+    "resp_6a73e61645405400869a4cc2",
+    "resp_6a73e6171a48d05d199d46bf",
+    "resp_6a73e619483dd89dfc294f53"
+  ],
+  "payload_type_counts": {
+    "runtime.command.accepted": 1,
+    "session.run.linked": 1,
+    "run.model.configured": 1,
+    "turn.input.user": 1,
+    "run.lifecycle.started": 1,
+    "task.stream.linked": 9,
+    "task.lifecycle.proposed": 9,
+    "task.lifecycle.accepted": 8,
+    "task.lifecycle.started": 8,
+    "task.lifecycle.scheduled": 5,
+    "task.lifecycle.side_effect_intent": 5,
+    "task.lifecycle.status": 6,
+    "task.lifecycle.completed": 8,
+    "task.lifecycle.output": 2,
+    "tool.result": 2,
+    "task.lifecycle.rejected": 1,
+    "run.output.delta": 6,
+    "run.terminal.completed": 1
+  },
+  "on_disk_hello_py": "print('Hello from Muse Code')\n",
+  "identity_substitution_note": "Single opportunistic smoke write of hello.py (correct basename). NOT a multi-trial muse-smoke.txt identity-substitution series. Do not treat as N=10 Channel B equivalent.",
+  "comparison_ref": "muse-code.md"
+}

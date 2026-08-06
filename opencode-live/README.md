@@ -69,6 +69,8 @@ OpenCode **1.18.5**, model **`meta/muse-spark-1.2`**, 10 trials, **0/10** wrong 
 (all `muse-smoke.txt` / `muse_exact`). Artifacts under
 [`../results/2026-08-05/opencode-live/`](../results/2026-08-05/opencode-live/).
 
+**Related (not this harness):** Meta’s first-party **Muse Code** agent also targets Muse Spark 1.2. It is a separate harness, not a separate model. A single local smoke run (not an N=10 identity-sub series) and a comparison to OpenCode are in [`../muse-code.md`](../muse-code.md) and [`../results/2026-08-05/muse-code/`](../results/2026-08-05/muse-code/).
+
 ## Prior series (2026-07-31, `muse-spark-1.1`)
 
 OpenCode **1.18.5**, 10 trials, **10/10** wrong basenames (9× `claude-smoke.txt`, 1×
