@@ -32,7 +32,7 @@
 | **E** | Facts still hold / dated history | **Yes** — 1.1 multi-day failure series; 1.2 multi-channel 0/30 wrong |
 | **F** | Scrubbed artifacts ready | **Open — the only remaining gate.** Omit `resp_…`, full email text, secrets, `$HOME` paths |
 
-**Practical recommendation:** Gates A/B/D/E are cleared and the 1.2-clear follow-up went out **2026-08-08 18:03 EDT**. Two things remain: **Gate F (scrub)**, and the **courtesy window** that the follow-up's offer-to-hold created — publish **on/after 2026-08-13** unless Melissa replies sooner or asks for a hold (see §1.3).
+**Practical recommendation:** Gates A/B/D/E are cleared, the 1.2-clear follow-up went out **2026-08-08 18:03 EDT**, and the scrubbed draft is written ([`blog-draft-tool-argument-fidelity.md`](blog-draft-tool-argument-fidelity.md)). What remains is the **courtesy window** created by that email's offer-to-hold: **target Monday 2026-08-17**, earliest defensible **Friday 2026-08-14** (see §1.3 for the sizing). Re-read the live ToS immediately before publishing — it already moved once mid-evaluation, on 2026-08-06.
 
 Keep the standing framing constraints: do **not** claim Meta closed the ticket (it is open — "will be in touch when we have an update"), and do **not** claim 1.2 shipped *because of* the report.
 
@@ -101,7 +101,23 @@ Update this section when the recommendation changes.
 
 **Gate B reading:** §3.1 B accepts *"Meta acknowledges investigation"* as an alternative to the calendar window; the 2026-08-03 message is that acknowledgment, and **no hold was requested** — so §3.2's "asked for short hold" red light is not triggered. The 7-day window also independently elapsed on 2026-08-07.
 
-**Courtesy window created by the 08-08 send.** The follow-up explicitly offered to hold or adjust. That offer has to mean something: publishing before Melissa has a realistic chance to answer would make it hollow, which is worse for the record than not having offered at all. Give it **~3 business days → on/after 2026-08-13**. If she asks for a hold, calendar it and set a specific revisit date; if she does not reply, publish — §3.1 C is explicit that a silent stall is not an indefinite veto, and Gates A/B/D/E were already satisfied before this email went out.
+**Courtesy window created by the 08-08 send.** The follow-up explicitly offered to hold or adjust. That offer has to mean something: publishing before Melissa has a realistic chance to answer would make it hollow, which is worse for the record than not having offered at all.
+
+Sizing it from **Meta's own demonstrated latency on this thread**, not from a guess:
+
+| Sent | Replied | Turnaround |
+|---|---|---|
+| 2026-07-23 | 2026-07-29 | 6 days |
+| 2026-07-31 | 2026-08-03 | 3 days |
+
+The follow-up went out **18:03 EDT Saturday 2026-08-08**, so treat Monday **2026-08-10** as the first realistic read date. A typical reply then lands **2026-08-13 → 2026-08-16**.
+
+- **Target: Monday 2026-08-17.** Clears their full observed range; weekday publishing; costs nothing since the post is dated history.
+- **Earliest defensible: Friday 2026-08-14** — independently the +14d outer bound of the original fair window from the 07-31 package.
+
+If she asks for a hold, calendar it with a specific revisit date. If she does not reply, publish — §3.1 C is explicit that a silent stall is not an indefinite veto, and Gates A/B/D/E were satisfied before this email went out.
+
+**If she replies before publish**, revise the draft rather than appending: the *"ticket is still open"* line becomes false, and a confirmed fix would replace the deliberately agnostic "I can't tell you why" ending with a better one.
 
 ---
 
@@ -235,9 +251,10 @@ When a Muse post is created, record its path/URL here:
 | Optional retest immediately before publish | **2026-08-05** 1.2 multi-channel 0/30 (done; optional 1.1 spot-check if still claiming live 1.1 breakage) | [x] |
 | Gate D re-check after 2026-08-06 terms update | **2026-08-08** — §10.1(xi) unchanged, still purpose-based (§1.2.0) | [x] |
 | Send 1.2-clear follow-up to Melissa | **2026-08-08 18:03 EDT** (sent) | [x] |
-| Courtesy window after offer-to-hold (§1.3) | ends **~2026-08-13** | [ ] |
-| Blog draft complete + scrubbed | — | [ ] |
-| Publish | on/after 2026-08-13 absent a hold | [ ] |
+| Courtesy window after offer-to-hold (§1.3) | target **2026-08-17**; earliest **2026-08-14** | [ ] |
+| Blog draft complete + scrubbed | **2026-08-08** — `blog-draft-tool-argument-fidelity.md` (scrub verified) | [x] |
+| Re-read live ToS immediately before publish | — (moved once already on 2026-08-06) | [ ] |
+| Publish | **target 2026-08-17** absent a hold | [ ] |
 | If repro goes public: link from post | — | [ ] |
 
 ---
