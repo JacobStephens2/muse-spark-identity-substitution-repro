@@ -2,9 +2,9 @@
 
 **Purpose:** Decide when to publish a public blog post about this defect (or update one later), without re-deriving process from chat history.  
 **Scope:** Reliability / tool-use fidelity write-up about `muse-spark-1.1` identity-like path substitution under agentic context — not a security advisory process unless Meta or facts force that reframe.  
-**Related:** [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) (rates), [`REPORT.md`](REPORT.md) (vendor narrative), [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md) (private email draft), [`README.md`](README.md) (repo still private staging).
+**Related:** [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) (rates), [`REPORT.md`](REPORT.md) (vendor narrative), [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md) (2026-07-31 1.1 package, sent), [`meta-reply-to-melissa-1.2-clear.md`](meta-reply-to-melissa-1.2-clear.md) (1.2-clear follow-up draft, **not sent**), [`README.md`](README.md) (repo still private staging).
 
-**Last reviewed:** 2026-08-05
+**Last reviewed:** 2026-08-08
 
 ---
 
@@ -12,29 +12,54 @@
 
 | Item | Status |
 |---|---|
-| Public blog post | **Near-ready for a “1.1 broken / 1.2 clear” post** — handoff done; fair window still short of the full 1–2 weeks (see §1.1) |
+| Public blog post | **Cleared to publish** on timing and contract grounds — only scrub (Gate F) remains; see §1.1 |
 | Existing Muse-specific blog post | **None found** (personal blog / portfolio have other agent posts; no Muse Spark identity-substitution article) |
-| Private Meta channel | **Delivered** — Melissa email sent **2026-07-31 ~11:46 local** with rates, OpenCode/factory-seat impact, envelope SHAs, and full B2/B12 `resp_…` tables |
+| Private Meta channel | **Delivered** — Melissa email sent **2026-07-31 ~11:46 local** with rates, OpenCode/factory-seat impact, envelope SHAs, and full B2/B12 `resp_…` tables. **Acknowledged 2026-08-03** (see §1.3) |
 | Private repro repo | Still private; README: not approved for public release |
 | Evidence maturity for a technical post | **High** for 1.1 failure *and* for 1.2 clearance (2026-08-05: B2 0/10, B12 0/10, live OpenCode 0/10) |
 
-**Default path:** private handoff is done → optional short remaining fair window / ToS check → draft “was broken / now clear on 1.2” → scrub → publish.  
+**Default path:** private handoff done → acknowledged + fair window elapsed → 1.2-clear courtesy follow-up → draft “was broken / now clear on 1.2” → scrub → publish.  
 **Not waiting for:** root cause, immutable serving revision, or Meta’s permanent blessing.
 
-### 1.1 Green-light checklist (as of 2026-08-05)
+### 1.1 Green-light checklist (as of 2026-08-08)
 
 | ID | Condition | Status |
 |---|---|---|
 | **A** | Private report delivered | **Yes** — sent 2026-07-31 11:46 (rates + response IDs + impact) |
-| **B** | Fair window | **Partial** — ~5 calendar days since send as of 2026-08-05; full 1–2 weeks would be ~2026-08-07 to 2026-08-14. Softeners: issue framed as fidelity (not security); 1.2 retest is a collaborative “cleared” ending, not an open attack. Still no recorded Meta ask for a hold. |
-| **C** | Stalemate after handoff | N/A while B is the preferred path |
-| **D** | No contractual bar | **Checked 2026-08-05** — see **§1.2**. No blanket ban on a reliability write-up; avoid competitive-marketing benchmark framing and secrets |
+| **B** | Fair window | **Yes, two ways** — (1) explicit Meta acknowledgment **2026-08-03**: issue forwarded to the technical team, no hold requested (§1.3); (2) 8 calendar days elapsed, past the 7-day mark of 2026-08-07 |
+| **C** | Stalemate after handoff | N/A — B satisfied |
+| **D** | No contractual bar | **Re-verified 2026-08-08** against the terms updated 2026-08-06 — see **§1.2**. §10.1(xi) survived verbatim and is still purpose-based |
 | **E** | Facts still hold / dated history | **Yes** — 1.1 multi-day failure series; 1.2 multi-channel 0/30 wrong |
-| **F** | Scrubbed artifacts ready | **Before publish** — omit `resp_…`, full email text, secrets, `$HOME` paths |
+| **F** | Scrubbed artifacts ready | **Open — the only remaining gate.** Omit `resp_…`, full email text, secrets, `$HOME` paths |
 
-**Practical recommendation:** Safe to **finish the draft now**. Prefer publishing on/after **~2026-08-07** (one week from send) unless Meta requested a hold. If publishing sooner, keep tone factual and credit private report + 1.2 clearance; do not claim Meta closed *your* ticket or that 1.2 was shipped *because of* the report unless they said so.
+**Practical recommendation:** Gates A/B/D/E are cleared and the 1.2-clear follow-up went out **2026-08-08 18:03 EDT**. Two things remain: **Gate F (scrub)**, and the **courtesy window** that the follow-up's offer-to-hold created — publish **on/after 2026-08-13** unless Melissa replies sooner or asks for a hold (see §1.3).
 
-### 1.2 Contractual / ToS check (Gate D) — 2026-08-05
+Keep the standing framing constraints: do **not** claim Meta closed the ticket (it is open — "will be in touch when we have an update"), and do **not** claim 1.2 shipped *because of* the report.
+
+### 1.2 Contractual / ToS check (Gate D)
+
+#### 1.2.0 Re-verification after the 2026-08-06 terms update — checked 2026-08-08
+
+Meta emailed **2026-08-06** ("We're updating the Meta Model API Terms of Service") announcing updates to the ToS, AUP, Model Designation and Geographic Use Policy, and Data Commitments, effective that day. The 2026-08-05 Gate D check below therefore had to be redone. Pages are client-side rendered — `WebFetch` returns only the shell; read them in a browser.
+
+**Result: Gate D still passes. The two clauses the original analysis rested on survived the update verbatim, at unchanged numbering.**
+
+| Clause | State after update |
+|---|---|
+| **§10.1(xi)** public benchmarks | **Unchanged, verbatim:** *"publicly disseminate performance benchmarks or evaluations of the Services for the purpose of promoting or marketing a competing product or service, without Meta's prior written authorization"*. Still **purpose-based** — the factory-seat evaluation framing remains outside it |
+| **§10.1(ix)** competing models | Carve-out intact: *"using Services or Outputs solely for evaluation, benchmarking, or quality assessment of your own systems does not constitute a prohibited use"*. Now also reaches use "(including by taking Actions)" |
+| **§12** Confidentiality | Substantively unchanged. Adds *"Your Content constitutes your Confidential Information"* — protects your side. Observed Outputs on your own prompts are still not clearly Meta Confidential Information; continue to omit `resp_…` anyway |
+
+**Changed in a way that affects framing — §10.1(x) reverse engineering.** The clause now explicitly names **"harnesses"** and **"probing of inputs and outputs"** among prohibited methods. It remains qualified by purpose — the full phrase is *"or any other method designed to reconstruct or approximate the proprietary components of the Services"* — and fidelity testing is not designed to reconstruct proprietary components. **Blog implication:** describe the method as *black-box tool-argument fidelity testing on a fixed request envelope*. Do **not** describe it as "probing the model" or frame findings as inferences about internals, training data, or weights.
+
+**AUP (updated same day) — reviewed 2026-08-08.** Nothing bars a reliability write-up. The vulnerability clause is unchanged ("Identify, scan for, or exploit vulnerabilities … without proper authorization"), so the fidelity-not-exploit framing in §2 still applies and no research exception is needed. New material is about *operating* agents, not publishing about them. Two notes for the repo rather than the post:
+
+- New AUP language prohibits taking *"consequential or irreversible actions … including … executing destructive operations in production environments, without appropriate authorization, human oversight, review, and confirmation mechanisms."* `opencode_live.py --auto` and `muse exec --disable-approval` bypass approval **by design, in disposable workspaces** — that isolation is the safeguard. Keep it that way and keep saying so in the method description.
+- New provenance clauses (don't strip watermarks/labels/metadata from Outputs) are not implicated by this work.
+
+**Note:** the ToS page still displays *"Last updated: August 5, 2026"* even though the update email is dated 2026-08-06 and the new tier / Actions / provenance language is present. Treat the page content, not the stamp, as current.
+
+#### 1.2.1 Original check — 2026-08-05
 
 **Sources reviewed (public, self-serve Meta Model API preview terms):**
 
@@ -61,6 +86,22 @@ ToS header notes (as extracted 2026-08-05): *“These Terms govern your access t
 **Gate D conclusion (operator judgment, not legal advice):** For a scrubbed **reliability / engineering-experience** post about 1.1 path substitution and 1.2 clearance under your own OpenCode/factory evaluation, the **public Meta Model API ToS does not appear to impose a hard ban**. The main risk clause is **§10.1(xi)** — keep the purpose **your evaluation and factory-seat decision**, not promoting a competing product. Re-read the live ToS before publish (terms can change). This is **not legal advice**.
 
 Update this section when the recommendation changes.
+
+### 1.3 Meta channel status (Gate B evidence) — as of 2026-08-08
+
+| Date | Event |
+|---|---|
+| 2026-07-22 | Melissa opens: is this unexpected behavior, intended, or a security concern? |
+| 2026-07-23 | Reply: unexpected; tool-use fidelity, not exploit; support zip attached |
+| 2026-07-29 | Meta escalates to engineering as a **tool-use fidelity issue**; asks for response IDs |
+| 2026-07-31 11:46 | 1.1 package sent: rates + full B2/B12 `resp_…` tables + factory-seat impact |
+| **2026-08-03** | **Melissa: forwarded to the technical team, "will be in touch when we have an update to share," and "if you have anything new to add, feel free to reply back to this thread"** |
+| **2026-08-08 18:03 EDT** (22:03 UTC) | **1.2-clear follow-up sent** ([`meta-reply-to-melissa-1.2-clear.md`](meta-reply-to-melissa-1.2-clear.md)): 0/30 multi-channel retest, new 1.2 envelope SHAs, 20 clean `resp_…` IDs, no root-cause claim — **plus notice of intent to publish and an offer to hold** |
+| 2026-08-08 | No Meta reply yet to the follow-up. Ticket **open**, not closed |
+
+**Gate B reading:** §3.1 B accepts *"Meta acknowledges investigation"* as an alternative to the calendar window; the 2026-08-03 message is that acknowledgment, and **no hold was requested** — so §3.2's "asked for short hold" red light is not triggered. The 7-day window also independently elapsed on 2026-08-07.
+
+**Courtesy window created by the 08-08 send.** The follow-up explicitly offered to hold or adjust. That offer has to mean something: publishing before Melissa has a realistic chance to answer would make it hollow, which is worse for the record than not having offered at all. Give it **~3 business days → on/after 2026-08-13**. If she asks for a hold, calendar it and set a specific revisit date; if she does not reply, publish — §3.1 C is explicit that a silent stall is not an indefinite veto, and Gates A/B/D/E were already satisfied before this email went out.
 
 ---
 
@@ -189,11 +230,14 @@ When a Muse post is created, record its path/URL here:
 | Milestone | Target / actual | Done? |
 |---|---|---|
 | Send Melissa reply with 2026-07-31 IDs + impact framing | **2026-07-31 ~11:46 local** (sent) | [x] |
-| Meta acknowledges / engineering has package | — (behavioral: 1.2 clear on 2026-08-05 retest; no ticket-closed note on file) | [ ] |
-| Fair window end date (send + 7d / +14d) | **2026-08-07** / **2026-08-14** | [ ] |
+| Meta acknowledges / engineering has package | **2026-08-03** — forwarded to technical team; no hold requested; ticket still open | [x] |
+| Fair window end date (send + 7d / +14d) | **2026-08-07 — elapsed** / 2026-08-14 | [x] |
 | Optional retest immediately before publish | **2026-08-05** 1.2 multi-channel 0/30 (done; optional 1.1 spot-check if still claiming live 1.1 breakage) | [x] |
+| Gate D re-check after 2026-08-06 terms update | **2026-08-08** — §10.1(xi) unchanged, still purpose-based (§1.2.0) | [x] |
+| Send 1.2-clear follow-up to Melissa | **2026-08-08 18:03 EDT** (sent) | [x] |
+| Courtesy window after offer-to-hold (§1.3) | ends **~2026-08-13** | [ ] |
 | Blog draft complete + scrubbed | — | [ ] |
-| Publish | — | [ ] |
+| Publish | on/after 2026-08-13 absent a hold | [ ] |
 | If repro goes public: link from post | — | [ ] |
 
 ---
