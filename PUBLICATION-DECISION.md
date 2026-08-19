@@ -2,9 +2,9 @@
 
 **Purpose:** Decide when to publish a public blog post about this defect (or update one later), without re-deriving process from chat history.  
 **Scope:** Reliability / tool-use fidelity write-up about `muse-spark-1.1` identity-like path substitution under agentic context — not a security advisory process unless Meta or facts force that reframe.  
-**Related:** [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) (rates), [`REPORT.md`](REPORT.md) (vendor narrative), [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md) (2026-07-31 1.1 package, sent), [`meta-reply-to-melissa-1.2-clear.md`](meta-reply-to-melissa-1.2-clear.md) (1.2-clear follow-up draft, **not sent**), [`README.md`](README.md) (repo still private staging).
+**Related:** [`CURRENT-EVIDENCE.md`](CURRENT-EVIDENCE.md) (rates), [`REPORT.md`](REPORT.md) (vendor narrative), [`meta-reply-to-melissa-response-ids.md`](meta-reply-to-melissa-response-ids.md) (2026-07-31 1.1 package, sent), [`meta-reply-to-melissa-1.2-clear.md`](meta-reply-to-melissa-1.2-clear.md) (1.2-clear follow-up, **sent 2026-08-08 18:03 EDT**), [`README.md`](README.md) (repo still private staging).
 
-**Last reviewed:** 2026-08-08
+**Last reviewed:** 2026-08-19
 
 ---
 
@@ -12,8 +12,8 @@
 
 | Item | Status |
 |---|---|
-| Public blog post | **Cleared to publish** on timing and contract grounds — only scrub (Gate F) remains; see §1.1 |
-| Existing Muse-specific blog post | **None found** (personal blog / portfolio have other agent posts; no Muse Spark identity-substitution article) |
+| Public blog post | **Published 2026-08-19** at https://stephens.page/blog/the-filename-i-asked-for/ |
+| Existing Muse-specific blog post | **Live** - `the-filename-i-asked-for` on stephens.page/blog (portfolio commit `8863c30`) |
 | Private Meta channel | **Delivered** — Melissa email sent **2026-07-31 ~11:46 local** with rates, OpenCode/factory-seat impact, envelope SHAs, and full B2/B12 `resp_…` tables. **Acknowledged 2026-08-03** (see §1.3) |
 | Private repro repo | Still private; README: not approved for public release |
 | Evidence maturity for a technical post | **High** for 1.1 failure *and* for 1.2 clearance (2026-08-05: B2 0/10, B12 0/10, live OpenCode 0/10) |
@@ -21,18 +21,18 @@
 **Default path:** private handoff done → acknowledged + fair window elapsed → 1.2-clear courtesy follow-up → draft “was broken / now clear on 1.2” → scrub → publish.  
 **Not waiting for:** root cause, immutable serving revision, or Meta’s permanent blessing.
 
-### 1.1 Green-light checklist (as of 2026-08-08)
+### 1.1 Green-light checklist (as of 2026-08-19)
 
 | ID | Condition | Status |
 |---|---|---|
 | **A** | Private report delivered | **Yes** — sent 2026-07-31 11:46 (rates + response IDs + impact) |
 | **B** | Fair window | **Yes, two ways** — (1) explicit Meta acknowledgment **2026-08-03**: issue forwarded to the technical team, no hold requested (§1.3); (2) 8 calendar days elapsed, past the 7-day mark of 2026-08-07 |
 | **C** | Stalemate after handoff | N/A — B satisfied |
-| **D** | No contractual bar | **Re-verified 2026-08-08** against the terms updated 2026-08-06 — see **§1.2**. §10.1(xi) survived verbatim and is still purpose-based |
-| **E** | Facts still hold / dated history | **Yes** — 1.1 multi-day failure series; 1.2 multi-channel 0/30 wrong |
-| **F** | Scrubbed artifacts ready | **Open — the only remaining gate.** Omit `resp_…`, full email text, secrets, `$HOME` paths |
+| **D** | No contractual bar | **Re-verified 2026-08-19** against the live ToS (last-updated stamp still August 5, 2026). §10.1(xi) still purpose-based; §10.1(ix) carve-out intact; §10.1(x) still qualified by reconstruct/approximate. See **§1.2** |
+| **E** | Facts still hold / dated history | **Yes** - 1.1 multi-day failure series; 1.2 multi-channel 0/30 wrong |
+| **F** | Scrubbed artifacts ready | **Yes** - published page and agents.md contain zero `resp_…`, support-thread text, secrets, or `$HOME` paths |
 
-**Practical recommendation:** Gates A/B/D/E are cleared, the 1.2-clear follow-up went out **2026-08-08 18:03 EDT**, and the scrubbed draft is written ([`blog-draft-tool-argument-fidelity.md`](blog-draft-tool-argument-fidelity.md)). What remains is the **courtesy window** created by that email's offer-to-hold: **target Monday 2026-08-17**, earliest defensible **Friday 2026-08-14** (see §1.3 for the sizing). Re-read the live ToS immediately before publishing — it already moved once mid-evaluation, on 2026-08-06.
+**Published 2026-08-19.** Courtesy window targeted Monday 2026-08-17 (earliest defensible Friday 2026-08-14). No Meta reply to the 2026-08-08 offer-to-hold as of publish time (11 days). Live ToS re-read immediately before publish. Standing framing constraints kept: do **not** claim Meta closed the ticket, and do **not** claim 1.2 shipped *because of* the report.
 
 Keep the standing framing constraints: do **not** claim Meta closed the ticket (it is open — "will be in touch when we have an update"), and do **not** claim 1.2 shipped *because of* the report.
 
@@ -221,10 +221,10 @@ When a Muse post is created, record its path/URL here:
 
 | Field | Value |
 |---|---|
-| Status | **not created** |
-| Path / URL | — |
-| First published | — |
-| Last updated | — |
+| Status | **published** |
+| Path / URL | https://stephens.page/blog/the-filename-i-asked-for/ (agents.md companion at the same path) |
+| First published | 2026-08-19 |
+| Last updated | 2026-08-19 |
 
 ---
 
@@ -251,10 +251,10 @@ When a Muse post is created, record its path/URL here:
 | Optional retest immediately before publish | **2026-08-05** 1.2 multi-channel 0/30 (done; optional 1.1 spot-check if still claiming live 1.1 breakage) | [x] |
 | Gate D re-check after 2026-08-06 terms update | **2026-08-08** — §10.1(xi) unchanged, still purpose-based (§1.2.0) | [x] |
 | Send 1.2-clear follow-up to Melissa | **2026-08-08 18:03 EDT** (sent) | [x] |
-| Courtesy window after offer-to-hold (§1.3) | target **2026-08-17**; earliest **2026-08-14** | [ ] |
-| Blog draft complete + scrubbed | **2026-08-08** — `blog-draft-tool-argument-fidelity.md` (scrub verified) | [x] |
-| Re-read live ToS immediately before publish | — (moved once already on 2026-08-06) | [ ] |
-| Publish | **target 2026-08-17** absent a hold | [ ] |
+| Courtesy window after offer-to-hold (§1.3) | target **2026-08-17**; earliest **2026-08-14**; elapsed **2026-08-19** with no reply | [x] |
+| Blog draft complete + scrubbed | **2026-08-08** - `blog-draft-tool-argument-fidelity.md` (scrub verified) | [x] |
+| Re-read live ToS immediately before publish | **2026-08-19** - stamp still August 5, 2026; §10.1(ix)/(x)/(xi) unchanged from the 2026-08-08 check | [x] |
+| Publish | **2026-08-19** https://stephens.page/blog/the-filename-i-asked-for/ | [x] |
 | If repro goes public: link from post | — | [ ] |
 
 ---

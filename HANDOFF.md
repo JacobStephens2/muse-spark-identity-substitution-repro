@@ -9,7 +9,7 @@
 
 ## One-line state
 
-**1.1** failed multi-channel through **2026-07-31** (B2/live 100% wrong). Melissa package **sent 2026-07-31 ~11:46**; Meta **acknowledged 2026-08-03** (forwarded to technical team, no hold; ticket still open). **1.2** retest **2026-08-05**: B2/B12/live OpenCode all **0/10** wrong. 1.2-clear follow-up **sent 2026-08-08 18:03 EDT** with notice of intent to publish. **Muse Code** explored 2026-08-05: first-party **harness** (not a new model); default **`muse-spark-1.2-contributor`**; single `hello.py` smoke succeeded with Meta `resp_…` IDs — **not** an identity-sub N=10 series. Docs: `muse-code.md`, `CURRENT-EVIDENCE.md` Channel D. Publication: all gates clear except scrub; courtesy window ends **~2026-08-13** — `PUBLICATION-DECISION.md`.
+**1.1** failed multi-channel through **2026-07-31** (B2/live 100% wrong). Melissa package **sent 2026-07-31 ~11:46**; Meta **acknowledged 2026-08-03** (forwarded to technical team, no hold; ticket still open). **1.2** retest **2026-08-05**: B2/B12/live OpenCode all **0/10** wrong. 1.2-clear follow-up **sent 2026-08-08 18:03 EDT** with notice of intent to publish. **Muse Code** explored 2026-08-05: first-party **harness** (not a new model); default **`muse-spark-1.2-contributor`**; single `hello.py` smoke succeeded with Meta `resp_…` IDs — **not** an identity-sub N=10 series. Docs: `muse-code.md`, `CURRENT-EVIDENCE.md` Channel D. Publication: **published 2026-08-19** at https://stephens.page/blog/the-filename-i-asked-for/ - `PUBLICATION-DECISION.md`.
 
 ---
 
